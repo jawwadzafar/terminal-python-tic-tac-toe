@@ -18,12 +18,9 @@ class Game(object):
 
     def turn(self):
         print(self.current_player + "'s turn.")
-        # TODO: improve to show only available turns
-        # TODO: handle exception for non int numbers
         position = input("Choose a position from 1 to 9 ")
         valid = False
         while not valid:
-            # TODO: use range instead of list
             while position not in ["1", "2", "3", "4", "5", "6", "7", "8", "9"]:
                 position = input("Incorrect. Choose a position from 1 to 9 again ")
 
@@ -118,7 +115,6 @@ class Game(object):
         return
         
     def run(self):
-        print('Welcome to Terminal Tic Tac Toe')
         self.display_board()
 
         while self.game_still_going:
@@ -127,12 +123,11 @@ class Game(object):
             self.check_game_status()
 
         #End of the game
-        if self.winner == "X" or self.winner == "O":
+        if self.winner != None:
             print(self.winner + " won.")
-        elif self.winner == None:
+        else:
             print("Tie. ")
 
 if __name__ == "__main__":
-    print('Creating game object...')
     game = Game()
     game.run()
